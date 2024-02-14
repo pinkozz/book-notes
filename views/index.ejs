@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Book Notes</title>
+  <link rel="stylesheet" type="text/css" href="styles/layout.css">
 </head>
 <body>
   <% for(let i = 0; i<notes.length; i++) {%>
@@ -11,7 +12,7 @@
       <h1><%= notes[i].title %></h1>
       <small>Date Read: <%= notes[i].dateRead %> ISBN: <%= notes[i].isbn %></small><br>
       <img width="125" height="187" src="https://covers.openlibrary.org/b/isbn/<%=notes[i].isbn%>-M.jpg" />
-      <h3><%= notes[i].description %></h3>
+      <p><%= notes[i].description %></p>
     </div>
     
   <%}%>
