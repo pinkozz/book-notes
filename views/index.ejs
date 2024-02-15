@@ -10,7 +10,7 @@
   <% for(let i = 0; i<notes.length; i++) {%>
     <div>
       <h1><%= notes[i].title %></h1>
-      <small>Date Read: <%= notes[i].dateRead %> ISBN: <%= notes[i].isbn %></small><br>
+      <small>Date Read: <%= notes[i].dateread %> ISBN: <%= notes[i].isbn %></small><br>
       <img width="125" height="187" src="https://covers.openlibrary.org/b/isbn/<%=notes[i].isbn%>-M.jpg" />
       <p><%= notes[i].description %></p>
     </div>
