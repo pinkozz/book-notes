@@ -10,7 +10,7 @@
   <a href="/new">New Post</a>
   <% for(let i = 0; i<notes.length; i++) {%>
     <div>
-      <h1><%= notes[i].title %></h1>
+      <a href="/<%=notes[i].id%>" style="text-decoration: underline; color: black; font-size:xx-large;"><%= notes[i].title %></a><br>
       <small>Date Read: <%= notes[i].dateread %> ISBN: <%= notes[i].isbn %></small><br>
       <img width="125" height="187" src="https://covers.openlibrary.org/b/isbn/<%=notes[i].isbn%>-M.jpg" />
       <p><%= notes[i].description %></p>
