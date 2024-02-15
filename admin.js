@@ -58,6 +58,7 @@ app.get("/edit/:id", (req, res) => {
   res.render("modify.ejs", {note: note});
 });
 
+// Edit certain note
 app.post("/modify/edit/:id", (req,res) => {
   const id = req.params.id;
 
@@ -70,6 +71,7 @@ app.post("/modify/edit/:id", (req,res) => {
   res.redirect("/");
 });
 
+// Add new note
 app.post("/modify/new", (req, res) => {
   const post = [
     req.body.isbn,
@@ -80,7 +82,17 @@ app.post("/modify/new", (req, res) => {
 
   db.query("INSERT INTO note (isbn, title, dateread, description) VALUES ($1, $2, $3, $4);", post);
 
+  viewNotes();
   res.redirect("/");
+});
+
+// Delete certain note
+app.get("/delete/:id", (req, res) => {
+  const id = parseInt(req.params.id);
+  db.query("DELETE FROM note WHERE id = $1", [id]);
+
+  viewNotes();
+  res.redirect("/")
 });
 
 app.listen(port, () => {
