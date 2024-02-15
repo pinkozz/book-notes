@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Book Notes</title>
+  <link rel="stylesheet" type="text/css" href="styles/layout.css">
+</head>
+<body>
+  <a href="/new">New Post</a>
+  <% for(let i = 0; i<notes.length; i++) {%>
+    <div>
+      <h1><%= notes[i].title %></h1>
+      <small>Date Read: <%= notes[i].dateread %> ISBN: <%= notes[i].isbn %></small><br>
+      <img width="125" height="187" src="https://covers.openlibrary.org/b/isbn/<%=notes[i].isbn%>-M.jpg" />
+      <p><%= notes[i].description %></p>
+      
+      <a href="/edit/<%=notes[i].id%>">Edit</a>
+    </div>
+  <%}%>
+</body>
+</html>

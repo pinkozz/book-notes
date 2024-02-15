@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Modify</title>
+  <link rel="stylesheet" type="text/css" href="styles/layout.css">
+</head>
+<body>
+  <%if(locals.note) {%>
+    <form id="editForm" method="post" action="/modify/edit/<%=note.id%>">
+      <input type="text" name="isbn" value="<%=note.isbn%>"><br>
+      <input type="text" name="title" value="<%=note.title%>"><br>
+      <input type="text" name="dateread" value="<%=note.dateread%>"><br>
+      <textarea type="text" name="description" rows="5"><%=note.description%></textarea><br>
+      <button class="full-width" type="submit">Submit</button>
+    </form>
+  <%} else {%>
+    <form id="newNoteForm" method="post" action="/modify/new">
+      <input type="text" name="isbn" placeholder="ISBN(13 numbers)" required><br>
+      <input type="text" name="title" placeholder="Title" required><br>
+      <input type="text" name="dateread" placeholder="Jan01 2000" required><br>
+      <textarea type="text" name="description" rows="5" placeholder="Description" required></textarea><br>
+      <button class="full-width" type="submit">Submit</button>
+    </form>
+  <%}%>
+</body>
+</html>
