@@ -19,11 +19,18 @@ db.connect();
 
 let notes = [];
 
+// GET all posts
 app.get("/", async (req, res) => {
   const result = await db.query("SELECT * FROM note");
   notes = result.rows;
 
   res.render("index.ejs", {notes: notes});
+});
+
+// GET post by id
+app.get("/:id", (req, res) => {
+  const note = notes.find((note) => note.id === parseInt(req.params.id));
+  res.render("note.ejs", {note: note});
 });
 
 app.listen(port, () => {
