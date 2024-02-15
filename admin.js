@@ -8,6 +8,7 @@ const app = new express();
 const port = 4000;
 
 app.use(express.static('public'));
+app.use(bodyParser.urlencoded({extended: true}));
 
 const db = new pg.Client({
   user: "postgres",
@@ -50,11 +51,36 @@ app.get("/:id", (req, res) => {
   res.render("note.ejs", {note: note});
 });
 
-// Edit certain post
+// GET the edit form
 app.get("/edit/:id", (req, res) => {
   const note = notes.find((note) => note.id === parseInt(req.params.id));
 
   res.render("modify.ejs", {note: note});
+});
+
+app.post("/modify/edit/:id", (req,res) => {
+  const id = req.params.id;
+
+  if(req.body.isbn) db.query("UPDATE note SET isbn = $1 WHERE id = $2", [req.body.isbn, id]);
+  if(req.body.title) db.query("UPDATE note SET title = $1 WHERE id = $2", [req.body.title, id]);
+  if(req.body.dateread) db.query("UPDATE note SET dateread = $1 WHERE id = $2", [req.body.dateread, id]);
+  if(req.body.description) db.query("UPDATE note SET description = $1 WHERE id = $2", [req.body.description, id]);
+
+  viewNotes();
+  res.redirect("/");
+});
+
+app.post("/modify/new", (req, res) => {
+  const post = [
+    req.body.isbn,
+    req.body.title,
+    req.body.dateread,
+    req.body.description,
+  ];
+
+  db.query("INSERT INTO note (isbn, title, dateread, description) VALUES ($1, $2, $3, $4);", post);
+
+  res.redirect("/");
 });
 
 app.listen(port, () => {
