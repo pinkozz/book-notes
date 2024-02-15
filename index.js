@@ -19,11 +19,21 @@ db.connect();
 
 let notes = [];
 
+function viewNotes() {
+  db.query("SELECT * FROM note", (err, res) => {
+    if(err) {
+      console.error("Error executing query", err.stack);
+    } else {
+      notes = res.rows;
+    }
+  });
+}
+
+viewNotes();
+
 // GET all posts
 app.get("/", async (req, res) => {
-  const result = await db.query("SELECT * FROM note");
-  notes = result.rows;
-
+  viewNotes();
   res.render("index.ejs", {notes: notes});
 });
 
