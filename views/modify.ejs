@@ -9,7 +9,7 @@
 <body>
   <div class="container">
     <h1>
-      Modify Note
+      <%=title%>
     </h1>
     <%if(locals.note) {%>
         <form id="editForm" method="post" action="/modify/edit/<%=note.id%>">

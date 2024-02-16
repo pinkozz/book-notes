@@ -42,7 +42,8 @@ app.get("/", async (req, res) => {
 
 // GET the new post form
 app.get("/new", (req, res) => {
-  res.render("modify.ejs");
+  const title = "New Note";
+  res.render("modify.ejs", {title: title});
 });
 
 // GET post by id
@@ -54,8 +55,9 @@ app.get("/:id", (req, res) => {
 // GET the edit form
 app.get("/edit/:id", (req, res) => {
   const note = notes.find((note) => note.id === parseInt(req.params.id));
+  const title = "Modify Note";
 
-  res.render("modify.ejs", {note: note});
+  res.render("modify.ejs", {note: note, title: title});
 });
 
 // Edit certain note
