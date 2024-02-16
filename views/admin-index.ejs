@@ -7,17 +7,22 @@
   <link rel="stylesheet" type="text/css" href="styles/layout.css">
 </head>
 <body>
-  <a href="/new">New Post</a>
-  <% for(let i = 0; i<notes.length; i++) {%>
-    <div>
-      <a href="/<%=notes[i].id%>" style="text-decoration: underline; color: black; font-size:xx-large;"><%= notes[i].title %></a><br>
-      <small>Date Read: <%= notes[i].dateread %> ISBN: <%= notes[i].isbn %></small><br>
-      <img width="125" height="187" src="https://covers.openlibrary.org/b/isbn/<%=notes[i].isbn%>-M.jpg" />
-      <p><%= notes[i].description %></p>
-      
-      <a href="/edit/<%=notes[i].id%>">Edit</a>
-      <a href="/delete/<%=notes[i].id%>">Delete</a>
-    </div>
-  <%}%>
+  <div class="container">
+    <a href="/new">New Post</a>
+    <h1 style="font-size: 3rem;">
+      Book Notes (<%=notes.length%>):
+    </h1>
+    <% for(let i = 0; i<notes.length; i++) {%>
+      <div>
+        <img class="note-img" width="125" height="187" src="https://covers.openlibrary.org/b/isbn/<%=notes[i].isbn%>-M.jpg" />
+        <a href="/<%=notes[i].id%>" style="text-decoration: underline; color: black; font-size:xx-large;"><%= notes[i].title %></a>
+        <small>Date Read: <%= notes[i].dateread %> ISBN: <%= notes[i].isbn %></small>
+        <p><%= notes[i].description %></p>
+
+        <a href="/edit/<%=notes[i].id%>">Edit</a>
+        <a href="/delete/<%=notes[i].id%>">Delete</a>
+      </div>
+    <%}%>
+  </div>
 </body>
 </html>

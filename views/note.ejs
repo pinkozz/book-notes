@@ -7,11 +7,17 @@
   <link rel="stylesheet" type="text/css" href="styles/layout.css">
 </head>
 <body>
-  <%if(locals.note) {%>
-    <h1><%= note.title %></h1>
-    <small>Date Read: <%= note.dateread %> ISBN: <%= note.isbn %></small><br>
-    <img width="125" height="187" src="https://covers.openlibrary.org/b/isbn/<%=note.isbn%>-M.jpg" />
-    <p><%= note.description %></p>
-  <%}%>
+  <div class="container">
+    <%if(locals.note) {%>
+      <div>
+        <img class="note-img" width="125" height="187" src="https://covers.openlibrary.org/b/isbn/<%=note.isbn%>-M.jpg"/>
+        <a style="text-decoration: underline; color: black; font-size:xx-large;"><%= note.title %></a>
+        <small>Date Read: <%= note.dateread %> ISBN: <%= note.isbn %></small>
+        <p><%= note.description %></p>  
+      </div>
+      
+    <%}%>
+  </div>
+  
 </body>
 </html>
