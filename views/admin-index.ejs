@@ -14,8 +14,8 @@
     </h1>
     <% for(let i = 0; i<notes.length; i++) {%>
       <div>
-        <img class="note-img" width="125" height="187" src="https://covers.openlibrary.org/b/isbn/<%=notes[i].isbn%>-M.jpg" />
-        <a href="/<%=notes[i].id%>" style="text-decoration: underline; color: black; font-size:xx-large;"><%= notes[i].title %></a>
+        <img class="note-img" src="https://covers.openlibrary.org/b/isbn/<%=notes[i].isbn%>-M.jpg" />
+        <a class="note-title" href="/<%=notes[i].id%>"><%= notes[i].title %></a>
         <small>Date Read: <%= notes[i].dateread %> ISBN: <%= notes[i].isbn %></small>
         <p><%= notes[i].description %></p>
 
