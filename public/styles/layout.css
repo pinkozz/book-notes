@@ -14,15 +14,22 @@ h1, small {
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
 }
 
-
 small {
   display: block;
 }
 
 .note-img {
+  width: "125";
+  height: "187";
   float: left;
   margin-right: 30px;
   margin-bottom: 10px;
+}
+
+.note-title {
+  text-decoration: underline;
+  color: black;
+  font-size:xx-large;
 }
 
 .note-text {
