@@ -10,8 +10,8 @@
   <div class="container">
     <%if(locals.note) {%>
       <div>
-        <img class="note-img" width="125" height="187" src="https://covers.openlibrary.org/b/isbn/<%=note.isbn%>-M.jpg"/>
-        <a style="text-decoration: underline; color: black; font-size:xx-large;"><%= note.title %></a>
+        <img class="note-img" src="https://covers.openlibrary.org/b/isbn/<%=note.isbn%>-M.jpg"/>
+        <a class="note-title"><%= note.title %></a>
         <small>Date Read: <%= note.dateread %> ISBN: <%= note.isbn %></small>
         <p><%= note.description %></p>  
       </div>
