@@ -38,23 +38,9 @@ small {
 }
 
 .note-img {
-  width: 125px;
-  height: 187px;
   float: left;
   margin-right: 30px;
   margin-bottom: 10px;
-}
-
-.notes-title {
-  font-size: 2em;
-  text-decoration: underline;
-  color: #606;
-}
-
-.note-title {
-  font-size: 3em;
-  font-weight: 900;
-  color: black;
 }
 
 .note-text {
@@ -69,4 +55,8 @@ small {
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+div {
+  padding-bottom: 25px;
 }

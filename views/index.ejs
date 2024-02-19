@@ -8,7 +8,7 @@
 </head>
 <body>
   <div class="container">
-    
+
     <a class="note-title">
       Book Notes
     </a>
@@ -24,8 +24,13 @@
     <% for(let i = 0; i<notes.length; i++) {%>
       <div>
         <img class="note-img" src="https://covers.openlibrary.org/b/isbn/<%=notes[i].isbn%>-M.jpg" />
+<<<<<<< HEAD
         <a class="notes-title" href="/<%=notes[i].id%>"><%= notes[i].title %></a>
         <small>Date Read: <%= notes[i].dateread %>. How Strongly I Recommend It: <%= notes[i].recommend %>/10</small>
+=======
+        <a class="note-title" href="/<%=notes[i].id%>"><%= notes[i].title %></a>
+        <small>Date Read: <%= notes[i].dateread %> ISBN: <%= notes[i].isbn %></small>
+>>>>>>> 2977b65f803ba5cef6259376cb6376e4a62b92f3
         <p class="note-text"><%= notes[i].description %></p>
       </div>
     <%}%>
