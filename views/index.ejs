@@ -8,14 +8,24 @@
 </head>
 <body>
   <div class="container">
-    <h1 style="font-size: 3rem;">
-      Book Notes (<%=notes.length%>):
-    </h1>
+    
+    <a class="note-title">
+      Book Notes
+    </a>
+    <br>
+    <h1 style="font-weight: 100; font-size: 2em;">
+      Books I've Read.
+    </h2>
+    <p style="font-size: 1.2em">
+      Tiny summary but detailed notes for each. Use the ISBN number to find it from your local library or anywhere else. This page will constantly update as I read more, so bookmark it if you want to check back in a few months.
+    </p>
+    <br>
+
     <% for(let i = 0; i<notes.length; i++) {%>
       <div>
-        <img class="note-img" width="125" height="187" src="https://covers.openlibrary.org/b/isbn/<%=notes[i].isbn%>-M.jpg" />
-        <a href="/<%=notes[i].id%>" style="text-decoration: underline; color: black; font-size:xx-large;"><%= notes[i].title %></a>
-        <small>Date Read: <%= notes[i].dateread %> ISBN: <%= notes[i].isbn %></small>
+        <img class="note-img" src="https://covers.openlibrary.org/b/isbn/<%=notes[i].isbn%>-M.jpg" />
+        <a class="notes-title" href="/<%=notes[i].id%>"><%= notes[i].title %></a>
+        <small>Date Read: <%= notes[i].dateread %>. How Strongly I Recommend It: <%= notes[i].recommend %>/10</small>
         <p class="note-text"><%= notes[i].description %></p>
       </div>
     <%}%>

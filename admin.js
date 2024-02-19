@@ -68,6 +68,7 @@ app.post("/modify/edit/:id", (req,res) => {
   if(req.body.title) db.query("UPDATE note SET title = $1 WHERE id = $2", [req.body.title, id]);
   if(req.body.dateread) db.query("UPDATE note SET dateread = $1 WHERE id = $2", [req.body.dateread, id]);
   if(req.body.description) db.query("UPDATE note SET description = $1 WHERE id = $2", [req.body.description, id]);
+  if(req.body.note) db.query("UPDATE note SET note = $1 WHERE id = $2", [req.body.note, id]);
 
   viewNotes();
   res.redirect("/");
@@ -80,9 +81,10 @@ app.post("/modify/new", (req, res) => {
     req.body.title,
     req.body.dateread,
     req.body.description,
+    req.body.note,
   ];
 
-  db.query("INSERT INTO note (isbn, title, dateread, description) VALUES ($1, $2, $3, $4);", post);
+  db.query("INSERT INTO note (isbn, title, dateread, description, note) VALUES ($1, $2, $3, $4, $5);", post);
 
   viewNotes();
   res.redirect("/");

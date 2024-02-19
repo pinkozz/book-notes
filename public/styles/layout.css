@@ -1,6 +1,18 @@
-h1, small {
+h1 {
   margin: 0;
   padding: 0;
+}
+
+h2 {
+  font-weight: 700;
+}
+
+a {
+  text-decoration: none;
+}
+
+hr {
+  color: black;
 }
 
 .container {
@@ -14,27 +26,47 @@ h1, small {
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
 }
 
-
 small {
   display: block;
+  font-size: 1em;
+  margin-top: 1rem;
+  color: #666;
+}
+
+.note-view > small {
+  font-size: 1.6em;
 }
 
 .note-img {
+  width: 125px;
+  height: 187px;
   float: left;
   margin-right: 30px;
   margin-bottom: 10px;
 }
 
+.notes-title {
+  font-size: 2em;
+  text-decoration: underline;
+  color: #606;
+}
+
+.note-title {
+  font-size: 3em;
+  font-weight: 900;
+  color: black;
+}
+
 .note-text {
-  font-size: 1rem;
+  font-size: 20px;
+}
+
+.note {
+  font-size: 20px;
 }
 
 .image-desc {
   display: flex;
   align-items: center;
   justify-content: center;
-}
-
-div {
-  padding-bottom: 25px;
 }

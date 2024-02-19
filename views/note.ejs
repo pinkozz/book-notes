@@ -8,14 +8,22 @@
 </head>
 <body>
   <div class="container">
+    <a class="note-title" href="/">
+      Book Notes
+    </a>
     <%if(locals.note) {%>
-      <div>
-        <img class="note-img" width="125" height="187" src="https://covers.openlibrary.org/b/isbn/<%=note.isbn%>-M.jpg"/>
-        <a style="text-decoration: underline; color: black; font-size:xx-large;"><%= note.title %></a>
-        <small>Date Read: <%= note.dateread %> ISBN: <%= note.isbn %></small>
-        <p><%= note.description %></p>  
+      <div class="note-view">
+        <img class="note-img" src="https://covers.openlibrary.org/b/isbn/<%=note.isbn%>-M.jpg"/>
+        <a class="note-title"><%= note.title %></a>
+        <small>ISBN: <%= note.isbn %></small>
+        <small>Date Read: <%= note.dateread %></small>
+        <small>How Strongly I Recommend It: <%= note.recommend %>/10</small>
+        <p class="note-text"><%= note.description %></p>  
       </div>
-      
+      <h2 style="font-size: 2em;">My Notes</h2>
+      <div>
+        <p class="note"><%= note.note %></p>
+      </div>
     <%}%>
   </div>
   
