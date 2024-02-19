@@ -15,6 +15,10 @@ hr {
   color: black;
 }
 
+.index-paragraph {
+  font-size: 1.2em;
+}
+
 .container {
   display: flex;
   flex-direction: column;
@@ -35,6 +39,11 @@ small {
 
 .note-view > small {
   font-size: 1.6em;
+}
+
+.link {
+  color: #606;
+  text-decoration: underline;
 }
 
 .note-img {

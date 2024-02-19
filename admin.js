@@ -22,6 +22,7 @@ db.connect();
 
 let notes = [];
 
+// View notes (Not sorted)
 function viewNotes() {
   db.query("SELECT * FROM note", (err, res) => {
     if(err) {
@@ -32,12 +33,62 @@ function viewNotes() {
   });
 }
 
-viewNotes();
+// View notes (sorted by date - newest first)
+function newestNotes() {
+  db.query("SELECT * FROM note ORDER BY dateread DESC;", (err, res) => {
+    if(err) {
+      console.error("Error executing query", err.stack);
+    } else {
+      notes = res.rows;
+    }
+  });
+}
 
+// View notes (sorted by rating - best first)
+function bestNotes() {
+  db.query("SELECT * FROM note ORDER BY recommend DESC;", (err, res) => {
+    if(err) {
+      console.error("Error executing query", err.stack);
+    } else {
+      notes = res.rows;
+    }
+  });
+}
+
+// View notes (sorted by title - alphabetical order)
+function alphabeticalNotes() {
+  db.query("SELECT * FROM note ORDER BY title ASC;", (err, res) => {
+    if(err) {
+      console.error("Error executing query", err.stack);
+    } else {
+      notes = res.rows;
+    }
+  });
+}
+
+viewNotes();
 // View the main page
 app.get("/", async (req, res) => {
   viewNotes();
   res.render("admin-index.ejs", {notes: notes});
+});
+
+// GET posts sorted by date
+app.get("/sort/date", (req, res) => {
+  newestNotes();
+  res.redirect("/");
+});
+
+// GET posts sorted by rating
+app.get("/sort/rating", (req, res) => {
+  bestNotes();
+  res.redirect("/");
+});
+
+// GET posts sorted by title
+app.get("/sort/title", (req, res) => {
+  alphabeticalNotes();
+  res.redirect("/");
 });
 
 // GET the new post form
@@ -69,6 +120,7 @@ app.post("/modify/edit/:id", (req,res) => {
   if(req.body.dateread) db.query("UPDATE note SET dateread = $1 WHERE id = $2", [req.body.dateread, id]);
   if(req.body.description) db.query("UPDATE note SET description = $1 WHERE id = $2", [req.body.description, id]);
   if(req.body.note) db.query("UPDATE note SET note = $1 WHERE id = $2", [req.body.note, id]);
+  if(req.body.recommend) db.query("UPDATE note SET recommend = $1 WHERE id = $2", [req.body.recommend, id]);
 
   viewNotes();
   res.redirect("/");
@@ -82,9 +134,10 @@ app.post("/modify/new", (req, res) => {
     req.body.dateread,
     req.body.description,
     req.body.note,
+    req.body.recommend,
   ];
 
-  db.query("INSERT INTO note (isbn, title, dateread, description, note) VALUES ($1, $2, $3, $4, $5);", post);
+  db.query("INSERT INTO note (isbn, title, dateread, description, note, recommend) VALUES ($1, $2, $3, $4, $5, $6);", post);
 
   viewNotes();
   res.redirect("/");
