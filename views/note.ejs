@@ -22,10 +22,7 @@
       </div>
       <h2 style="font-size: 2em;">My Notes</h2>
       <div>
-        <img class="note-img" width="125" height="187" src="https://covers.openlibrary.org/b/isbn/<%=note.isbn%>-M.jpg"/>
-        <a style="text-decoration: underline; color: black; font-size:xx-large;"><%= note.title %></a>
-        <small>Date Read: <%= note.dateread %> ISBN: <%= note.isbn %></small>
-        <p><%= note.description %></p>  
+        <p class="note"><%= note.note %></p>
       </div>
     <%}%>
   </div>
