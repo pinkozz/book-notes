@@ -1,0 +1,10 @@
+-- RUN THIS POSTGRES QUERY BEFORE STARTING WORKING WITH THIS APP
+CREATE TABLE note (
+  id SERIAL PRIMARY KEY,
+  isbn VARCHAR(13),
+  title TEXT,
+  dateread VARCHAR(10),
+  description TEXT,
+  note TEXT,
+  recommend INT
+);
